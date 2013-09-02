@@ -1,0 +1,56 @@
+<?php
+
+use Torann\Cells\Cells;
+use Torann\Cells\CellBaseController;
+
+class {cellClass} extends CellBaseController {
+
+	/**
+	 * Cell name.
+	 *
+	 * @var string
+	 */
+	public $name = '{cellName}';
+
+	/**
+	 * Default cache value in minutes.
+	 *
+	 * @var string
+	 */
+	public $cache = 0;
+
+	/**
+	 * Arrtibutes pass from a cell.
+	 *
+	 * @var array
+	 */
+	public $attributes = array(
+		'userId' => 9999,
+		'label'  => 'Generated Cell',
+	);
+
+	/**
+	 * Code to start this cell.
+	 *
+	 * @return void
+	 */
+	public function init()
+	{
+		// Initialize cell.
+	}
+
+	/**
+	 * Logic given to a cell and pass to cell's view.
+	 *
+	 * @return array
+	 */
+	public function run()
+	{
+		//$this->setAttribute('label', 'changed');
+
+		$attrs = $this->getAttributes();
+
+		return $attrs;
+	}
+
+}

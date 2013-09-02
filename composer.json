@@ -1,0 +1,30 @@
+{
+    "name": "torann/cells",
+    "description": "Cells are view components for Laravel 4. They are mini-controllers with their own MVC stack, can invoke logic and render views.",
+    "keywords": ["laravel", "laravel4", "cells", "layout", "widget"],
+    "authors": [
+        {
+            "name": "Daniel Stainback",
+            "email": "daniel@lyften.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "illuminate/view": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+			"src/Torann/Cells/Exceptions.php"
+        ],
+        "psr-0": {
+            "Torann\\Cells": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.2-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
