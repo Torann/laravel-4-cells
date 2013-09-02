@@ -1,4 +1,4 @@
-## Cells for Laravel 4
+## Cells for Laravel 4 - Alpha
 
 Cells are view components for Laravel 4. They are mini-controllers with their own MVC stack, can invoke logic and render views.
 
