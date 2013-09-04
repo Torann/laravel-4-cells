@@ -29,7 +29,7 @@ Cells also ships with a facade which provides the static syntax for creating col
 ~~~
 'aliases' => array(
 
-    'Cells' => 'Torann\Cells\Facades\Cells',
+    'Cells' => 'Torann\Cells\Facades\CellsFacade',
 
 )
 ~~~

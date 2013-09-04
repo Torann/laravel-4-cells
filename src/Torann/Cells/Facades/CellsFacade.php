@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class Cells extends Facade {
+class CellsFacade extends Facade {
 
     /**
      * Get the registered name of the component.
