@@ -2,6 +2,7 @@
     "name": "torann/cells",
     "description": "Cells are view components for Laravel 4. They are mini-controllers with their own MVC stack, can invoke logic and render views.",
     "keywords": ["laravel", "laravel4", "cells", "layout", "widget"],
+	"license": "BSD 2-Clause",
     "authors": [
         {
             "name": "Daniel Stainback",
