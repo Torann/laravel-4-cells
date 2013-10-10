@@ -15,6 +15,13 @@ abstract class CellBaseController {
 	protected $view;
 
 	/**
+	 * View action.
+	 *
+	 * @var string
+	 */
+	protected $viewAction;
+
+	/**
 	 * Default attributes.
 	 *
 	 * @var array
@@ -44,14 +51,7 @@ abstract class CellBaseController {
 	 *
 	 * @return void
 	 */
-	//abstract public function init();
-
-	/**
-	 * Abstract class run for a cell factory.
-	 *
-	 * @return void
-	 */
-	abstract public function run();
+	abstract public function init();
 
 	/**
 	 * Set attributes to object var.
@@ -102,20 +102,13 @@ abstract class CellBaseController {
 	 *
 	 * @return void
 	 */
-	public function beginCell()
+	public function initCell( $viewAction = 'display' )
 	{
+		$this->viewAction = $viewAction;
+
 		$this->init();
-	}
 
-	/**
-	 * End cell factory.
-	 *
-	 * @return void
-	 */
-	public function endCell()
-	{
-		$data = (array) $this->run();
-
+		$data = (array) $this->$viewAction();
 		$this->data = array_merge($this->attributes, $data);
 	}
 
@@ -124,18 +117,19 @@ abstract class CellBaseController {
 	 *
 	 * @return string
 	 */
-	public function display()
+	public function displayView()
 	{
-		$path = "$this->name.display";
+		$path = "$this->name.$this->viewAction";
 
+		// Are we caching this?
 		if($this->cache)
 		{
 			return Cache::remember("Cells.$path", $this->cache, function() use ($path) {
-				return CellBaseController::render($path);
+				return $this->renderView( $path );
 			});
 		}
 
-		return $this->render($path);
+		return $this->renderView( $path );
 	}
 
 	/**
@@ -143,11 +137,11 @@ abstract class CellBaseController {
 	 *
 	 * @return string
 	 */
-	public function render($path)
+	public function renderView( $path )
 	{
 		if ( ! $this->view->exists($path))
 		{
-			throw new UnknownCellsFileException("Cell view [$this->name] not found.");
+			throw new UnknownCellsFileException("Cell view [$this->name.$this->viewAction] not found.");
 		}
 
 		return (string) $this->view->make($path, $this->data);

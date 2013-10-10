@@ -6,7 +6,7 @@ Cells are view components for Laravel 4. They are mini-controllers with their ow
 
 - [Cells on GitHub](https://github.com/torann/laravel-4-cells)
 
-To get the lastest version of Cells simply require it in your `composer.json` file.
+To get the latest version of Cells simply require it in your `composer.json` file.
 
 ~~~
 "torann/cells": "dev-master"
@@ -51,18 +51,21 @@ Now you will see a controller class at `/app/cells/CellDemo.php` and view at `/a
 Using the Blade helper
 
 ~~~html
-@cell('demo')
+@cell('demo', 'display')
 ~~~
+
+- The first parameter is the cell name.
+- The second parameter is the view type, by default it is "display".
 
 Calling your cell in a view and passing `Demo Cell!` as the label
 
 ~~~php
-echo Cells::get('demo', array('label' => 'Demo Cell!'));
+echo Cells::get('demo', 'display', array('label' => 'Demo Cell!'));
 ~~~
 
 ### Caching
 
-Cells can be cached based on minutes. Simple change the `$cache` varaible in the cell controller to the number of minutes the cell should be cached.
+Cells can be cached based on minutes. Simple change the `$cache` variable in the cell controller to the number of minutes the cell should be cached.
 
 ~~~php
 class CellDemo extends CellBaseController {
@@ -72,7 +75,7 @@ class CellDemo extends CellBaseController {
      *
      * @var string
      */
-    public $cache = 100;
+    public $cache = 60;
 
 }
 ~~~

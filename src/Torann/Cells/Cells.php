@@ -1,13 +1,7 @@
 <?php namespace Torann\Cells;
 
-use Closure;
 use ReflectionClass;
-use Illuminate\Http\Response;
 use Illuminate\View\Environment;
-use Illuminate\Config\Repository;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\View\Compilers\BladeCompiler;
-use Symfony\Component\HttpFoundation\Cookie;
 
 class Cells {
 
@@ -21,9 +15,7 @@ class Cells {
 	/**
 	 * Create a new instance.
 	 *
-	 * @param  \Illuminate\Config\Repository     $config
 	 * @param  \Illuminate\View\Environment      $view
-	 * @param  \Illuminate\Filesystem\Filesystem $files
 	 * @return void
 	 */
 	public function __construct(Environment $view)
@@ -37,10 +29,11 @@ class Cells {
 	 * Cell instance.
 	 *
 	 * @param  string $className
+	 * @param  string $action
 	 * @param  array  $attributes
 	 * @return Torann\Cells
 	 */
-	public function get($className, $attributes = array())
+	public function get($className, $action = 'display', $attributes = array())
 	{
 		static $cells = array();
 
@@ -66,11 +59,9 @@ class Cells {
 
 		$instance->setAttributes($attributes);
 
-		$instance->beginCell();
+		$instance->initCell( $action );
 
-		$instance->endCell();
-
-		return $instance->display();
+		return $instance->displayView();
 	}
 
 }
