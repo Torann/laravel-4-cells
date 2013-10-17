@@ -41,9 +41,14 @@ abstract class CellBaseController {
 	 * @param  \Illuminate\Config\Repository $view
 	 * @return void
 	 */
-	public function __construct(Environment $view)
+	public function __construct(Environment $view, $caching_disabled)
 	{
 		$this->view = $view;
+
+		// Disable caching in local env
+		if($caching_disabled) {
+			$this->cache = 0;
+		}
 	}
 
 	/**

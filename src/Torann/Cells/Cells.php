@@ -13,14 +13,22 @@ class Cells {
 	protected $view;
 
 	/**
+	 * Environment view.
+	 *
+	 * @var Boolean
+	 */
+	protected $caching_disabled = false;
+
+	/**
 	 * Create a new instance.
 	 *
 	 * @param  \Illuminate\View\Environment      $view
 	 * @return void
 	 */
-	public function __construct(Environment $view)
+	public function __construct(Environment $view, $caching_disabled)
 	{
-		$this->view = $view;
+		$this->view 			= $view;
+		$this->caching_disabled = $caching_disabled;
 
 		$this->view->addLocation(app_path()."/cells");
 	}
@@ -52,7 +60,7 @@ class Cells {
 				throw new UnknownCellClassException("Cell target [$className] is not instantiable.");
 			}
 
-			$instance = $reflector->newInstance($this->view);
+			$instance = $reflector->newInstance($this->view, $this->caching_disabled);
 
 			array_set($cells, $className, $instance);
 		}

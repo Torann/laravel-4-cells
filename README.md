@@ -16,7 +16,7 @@ You'll then need to run `composer install` to download it and have the autoloade
 
 Once Cells is installed you need to register the service provider with the application. Open up `app/config/app.php` and find the `providers` key.
 
-~~~
+~~~php
 'providers' => array(
 
     'Torann\Cells\CellsServiceProvider',
@@ -26,12 +26,18 @@ Once Cells is installed you need to register the service provider with the appli
 
 Cells also ships with a facade which provides the static syntax for creating collections. You can register the facade in the `aliases` key of your `app/config/app.php` file.
 
-~~~
+~~~php
 'aliases' => array(
 
     'Cells' => 'Torann\Cells\Facades\CellsFacade',
 
 )
+~~~
+
+Create configuration file using artisan
+
+~~~
+$ php artisan config:publish torann/cells
 ~~~
 
 ### Creating a cell
@@ -79,3 +85,5 @@ class CellDemo extends CellBaseController {
 
 }
 ~~~
+
+By default caching is disabled in the `local` environment. To enable this change the setting `disable_cache_in_dev` to *false* in the config file. 
