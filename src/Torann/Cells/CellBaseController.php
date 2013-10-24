@@ -149,7 +149,7 @@ abstract class CellBaseController {
 			throw new UnknownCellsFileException("Cell view [$this->name.$this->viewAction] not found.");
 		}
 
-		return (string) $this->view->make($path, $this->data);
+		return $this->view->make( $path, $this->data )->render();
 	}
 
 }
