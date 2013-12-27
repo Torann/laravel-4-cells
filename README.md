@@ -1,8 +1,12 @@
-## Cells for Laravel 4 - Beta
+# Cells for Laravel 4 - Beta
+
+[![Latest Stable Version](https://poser.pugx.org/torann/cells/v/stable.png)](https://packagist.org/packages/torann/cells) [![Total Downloads](https://poser.pugx.org/torann/cells/downloads.png)](https://packagist.org/packages/torann/cells)
 
 Cells are view components for Laravel 4. They are mini-controllers with their own MVC stack, can invoke logic and render views.
 
-### Installation
+----------
+
+## Installation
 
 - [Cells on GitHub](https://github.com/torann/laravel-4-cells)
 
@@ -40,7 +44,7 @@ Create configuration file using artisan
 $ php artisan config:publish torann/cells
 ~~~
 
-### Creating a cell
+## Creating a cell
 
 You can create a cell using artisan command:
 
@@ -52,7 +56,7 @@ php artisan cells:create demo
 
 Now you will see a controller class at `/app/cells/CellDemo.php` and view at `/app/cells/demo/display.blade.php`
 
-### Rendering
+## Rendering
 
 Using the Blade helper
 
@@ -69,7 +73,7 @@ Calling your cell in a view and passing `Demo Cell!` as the label
 echo Cells::get('demo', 'display', array('label' => 'Demo Cell!'));
 ~~~
 
-### Caching
+## Caching
 
 Cells can be cached based on minutes. Simple change the `$cache` variable in the cell controller to the number of minutes the cell should be cached.
 
