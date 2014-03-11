@@ -29,6 +29,14 @@ abstract class CellBaseController {
 	public $attributes = array();
 
 	/**
+	 * Unique Cache ID.
+	 * Used for dynamic content
+	 *
+	 * @var string
+	 */
+	public $uniqueCacheId = null;
+
+	/**
 	 * Default cache value.
 	 *
 	 * @var string
@@ -129,7 +137,7 @@ abstract class CellBaseController {
 		// Are we caching this?
 		if($this->cache)
 		{
-			return Cache::remember("Cells.$path", $this->cache, function() use ($path) {
+			return Cache::remember("Cells.{$path}.{$this->uniqueCacheId}", $this->cache, function() use ($path) {
 				return $this->renderView( $path );
 			});
 		}

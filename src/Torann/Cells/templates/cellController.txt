@@ -13,6 +13,13 @@ class {cellClass} extends CellBaseController {
 	public $name = '{cellName}';
 
 	/**
+	 * Unique Cache ID.
+	 *
+	 * @var string
+	 */
+	public $uniqueCacheId = null;
+
+	/**
 	 * Default cache value in minutes.
 	 *
 	 * @var string
