@@ -2,15 +2,15 @@
 
 use Closure;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\View\Environment;
+use Illuminate\View\Factory;
 use Illuminate\Config\Repository;
 
 abstract class CellBaseController {
 
 	/**
-	 * Environment view.
+	 * Factory view.
 	 *
-	 * @var \Illuminate\View\Environment
+	 * @var \Illuminate\View\Factory
 	 */
 	protected $view;
 
@@ -49,7 +49,7 @@ abstract class CellBaseController {
 	 * @param  \Illuminate\Config\Repository $view
 	 * @return void
 	 */
-	public function __construct(Environment $view, $caching_disabled)
+	public function __construct(Factory $view, $caching_disabled)
 	{
 		$this->view = $view;
 

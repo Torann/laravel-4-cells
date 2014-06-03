@@ -1,19 +1,19 @@
 <?php namespace Torann\Cells;
 
 use ReflectionClass;
-use Illuminate\View\Environment;
+use Illuminate\View\Factory;
 
 class Cells {
 
 	/**
-	 * Environment view.
+	 * Factory view.
 	 *
-	 * @var Illuminate\View\Environment
+	 * @var Illuminate\View\Factory
 	 */
 	protected $view;
 
 	/**
-	 * Environment view.
+	 * Cache Toggle.
 	 *
 	 * @var Boolean
 	 */
@@ -22,10 +22,10 @@ class Cells {
 	/**
 	 * Create a new instance.
 	 *
-	 * @param  \Illuminate\View\Environment      $view
+	 * @param  \Illuminate\View\Factory      $view
 	 * @return void
 	 */
-	public function __construct(Environment $view, $caching_disabled)
+	public function __construct(Factory $view, $caching_disabled)
 	{
 		$this->view 			= $view;
 		$this->caching_disabled = $caching_disabled;
